@@ -1,5 +1,10 @@
+# Ignore everything
 *
 
-!chainwatch_alert_sharable.py
-!chainwatch_windows_sharable.py
+# Unignore needed files
+!chainwatch_windows_v1.py.py
+!chainwatch_linux_v1.py.py
+!.gitignore
 !*.md
+!*.txt
+
