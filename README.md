@@ -45,8 +45,7 @@ If the program starts while the chain is already below one or more thresholds, i
 
 - Python 3.9 or newer
 - An internet connection
-- A Torn API key with permission to read faction chain data
-- Membership in, or API access to, the faction being monitored
+- A Torn API key - public access key, no additional permissions needed
 
 The only shared third-party Python dependency is:
 
@@ -296,6 +295,10 @@ POLL_SECONDS = 3
 ```
 
 Three seconds is frequent enough for chain monitoring without making unnecessary API requests. Lower values increase API usage and may provide little practical benefit.
+
+Torn strictly enforces a per key API polling limit of 100 per minute. Setting POLL_SECONDS to 1 or lower may put your Torn account at risk of being restricted or banned.
+
+If you intend to run this script on multiple devices at once, either use separate public access API keys, or set POLL_SECONDS to 5 on all devices. This will allow you to run the script on up to six devices at once.
 
 ### Alert Thresholds
 
