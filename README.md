@@ -41,7 +41,7 @@ If the program starts while the chain is already below one or more thresholds, i
 
 ## Requirements
 
-### All Platforms
+### <u>All Platforms</u>
 
 - Python 3.9 or newer
 - An internet connection
@@ -53,7 +53,7 @@ The only shared third-party Python dependency is:
 requests
 ```
 
-### Windows
+### <u>Windows</u>
 
 The Windows script additionally requires:
 
@@ -67,7 +67,7 @@ The following modules are included with standard Python on Windows and do not ne
 - `winsound`
 - `ctypes`
 
-### Linux
+### <u>Linux</u>
 
 The Linux script uses the following system utilities:
 
@@ -77,25 +77,149 @@ The Linux script uses the following system utilities:
 
 SoX is technically optional. Without it, the script falls back to the terminal bell, which may be silent depending on your terminal and desktop configuration.
 
-## API Key Setup
+## Linux Installation
 
-Create a Torn API key that can access faction chain information. A public-only key is sufficient for the script's intended use.
+Commands differ slightly by distribution.
 
-Open the appropriate script and locate:
+Follow steps 1 and 2 only for your specific distribution or for running in a virtual environment.
 
-```python
-API_KEY = ""
+### <u>Fedora</u>
+
+### 1. Install/Update Python and Required Python Packages
+
+```bash
+sudo dnf install python3 python3-pip python3-tkinter libnotify sox
 ```
 
-Place your API key between the quotation marks:
+### 2. Install the Requests Dependency
 
-```python
-API_KEY = "your_api_key_here"
+```bash
+python3 -m pip install --user requests
 ```
 
-Do not publish, commit, or share a copy of the script after inserting your personal API key.
+Once completed, skip to step 3.
 
-The included sharable scripts intentionally leave this field blank.
+### <u>Ubuntu or Debian</u>
+
+### 1. Install/Update Python and Required Python Packages
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip python3-tk libnotify-bin sox
+```
+
+### 2. Install the Requests Dependency
+
+```bash
+python3 -m pip install --user requests
+```
+
+Once completed, skip to step 3.
+
+### <u>Arch Linux</u>
+
+### 1. Install/Update Python and Required Python Packages
+
+```bash
+sudo pacman -S python python-pip tk libnotify sox
+```
+
+### 2. Install the Requests Dependency
+
+```bash
+python3 -m pip install --user requests
+```
+
+Once completed, skip to step 3.
+
+### <u>Using a Virtual Environment</u>
+
+A virtual environment avoids installing Python packages globally.
+
+### 1. Install/Update Python and Required Python Packages
+
+The required system packages, including Tkinter, `notify-send`, and SoX, must still be installed through your distribution's package manager. Follow Step 1 for your specific Linux distribution. Then return to this section and complete Step 2:
+- [Fedora](#fedora)
+- [Ubuntu or Debian](#ubuntu-or-debian)
+- [Arch Linux](#arch-linux)
+
+### 2. Create a Virtual Environment, Activate, and Install the Requests Dependency
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install requests
+```
+
+Continue to step 3.
+
+### 3. Download the Linux Script
+
+Place `chainwatch_linux_v1.py` in a folder of your choice.
+
+For example:
+
+```text
+~/Scripts/ChainWatch
+```
+
+### 4. Rename the File
+For the security of your API key, rename the file after downloading to your local machine.
+
+Examples of good names:
+- chainwatch_private.py
+- chainwatch_personal.py
+- chainwatch_local.py
+- chainwatch_configured.py
+- [your torn username]_chainwatch.py
+
+Examples of bad names:
+- Leaving the name as is when downloaded (risk of uploading or sharing a configured file and compromising your API key)
+- chainwatch_public.py
+- chainwatch_sharable.py
+- chainwatch.py
+- share_me.py
+- what_is_this.py
+- random_gibberish.py
+- Anything ending in an extension other than .py (this will render the script unusable)
+
+### 5. Add Your API Key
+
+Edit `your_renamed_ChainWatch_file.py` and insert your API key as described in [API Key Setup](#api-key-setup).
+
+### 6. Run ChainWatch
+
+```bash
+python3 `your_renamed_ChainWatch_file.py`
+```
+
+Optionally you can make the script executable:
+
+1. Make the file executable:
+
+Without an alias:
+```bash
+chmod +x your_renamed_ChainWatch_file.py
+```
+
+With an alias (for example, 'chainwatch'):
+```bash
+chmod +x /path/to/your_renamed_ChainWatch_file.py
+alias chainwatch='/path/to/your_renamed_ChainWatch_file.py'
+source ~/.bashrc
+```
+
+2. Run the executable file:
+
+Without an alias:
+```bash
+./your_renamed_ChainWatch_file.py
+```
+
+With an alias:
+```bash
+chainwatch
+```
 
 ## Windows Installation
 
@@ -119,7 +243,7 @@ py --version
 
 ### 2. Download the Windows Script
 
-Place `chainwatch_windows_sharable.py` in a folder of your choice.
+Place `chainwatch_windows_v1.py` in a folder of your choice.
 
 For example:
 
@@ -127,7 +251,27 @@ For example:
 C:\Users\YourName\ChainWatch
 ```
 
-### 3. Install Python Dependencies
+### 3. Rename the File
+For the security of your API key, rename the file after downloading to your local machine.
+
+Examples of good names:
+- chainwatch_private.py
+- chainwatch_personal.py
+- chainwatch_local.py
+- chainwatch_configured.py
+- [your torn username]_chainwatch.py
+
+Examples of bad names:
+- Leaving the name as is when downloaded (risk of uploading or sharing a configured file and compromising your API key)
+- chainwatch_public.py
+- chainwatch_sharable.py
+- chainwatch.py
+- share_me.py
+- what_is_this.py
+- random_gibberish.py
+- Anything ending in an extension other than .py (this will render the script unusable)
+
+### 4. Install Python Dependencies
 
 Open PowerShell in that folder and run:
 
@@ -141,20 +285,20 @@ Or, when using the Python launcher:
 py -m pip install requests winotify
 ```
 
-### 4. Add Your API Key
+### 5. Add Your API Key
 
-Edit `chainwatch_windows_sharable.py` and insert your API key as described in [API Key Setup](#api-key-setup).
+Edit `your_renamed_ChainWatch_file.py` and insert your API key as described in [API Key Setup](#api-key-setup).
 
-### 5. Run ChainWatch
+### 6. Run ChainWatch
 
 ```powershell
-python .\chainwatch_windows_sharable.py
+python .\your_renamed_ChainWatch_file.py
 ```
 
 Or:
 
 ```powershell
-py .\chainwatch_windows_sharable.py
+py .\your_renamed_ChainWatch_file.py
 ```
 
 Keep the PowerShell window open while ChainWatch is running. Press `Ctrl+C` to stop it.
@@ -170,119 +314,25 @@ The Windows version uses native Windows features:
 
 The fullscreen overlay is intentionally click-through. It should not intercept mouse clicks while you are attacking or typing in another application. The overlay closes automatically after flashing and can also be dismissed with `Escape` while it has keyboard focus.
 
-## Linux Installation
+## API Key Setup
 
-Commands differ slightly by distribution.
+Create a Torn API key that can access faction chain information. A public-only key is sufficient for the script's intended use.
 
-### Fedora
+Open the appropriate script and locate:
 
-```bash
-sudo dnf install python3 python3-pip python3-tkinter libnotify sox
+```python
+API_KEY = ""
 ```
 
-Install the Python dependency:
+Place your API key between the quotation marks:
 
-```bash
-python3 -m pip install --user requests
+```python
+API_KEY = "your_api_key_here"
 ```
 
-### Ubuntu or Debian
+Do not publish, commit, or share a copy of the script after inserting your personal API key.
 
-```bash
-sudo apt update
-sudo apt install python3 python3-pip python3-tk libnotify-bin sox
-```
-
-Install the Python dependency:
-
-```bash
-python3 -m pip install --user requests
-```
-
-### Arch Linux
-
-```bash
-sudo pacman -S python python-pip tk libnotify sox
-```
-
-Install the Python dependency:
-
-```bash
-python3 -m pip install --user requests
-```
-
-### Using a Virtual Environment
-
-A virtual environment avoids installing Python packages globally:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install requests
-```
-
-The required system packages, including Tkinter, `notify-send`, and SoX, must still be installed through your distribution's package manager.
-
-### Run ChainWatch on Linux
-
-Place `chainwatch_alert_sharable.py` in a folder of your choice, insert your API key, and run:
-
-```bash
-python3 chainwatch_alert_sharable.py
-```
-
-Press `Ctrl+C` to stop it.
-
-You may optionally make the script executable:
-
-```bash
-chmod +x chainwatch_alert_sharable.py
-./chainwatch_alert_sharable.py
-```
-
-## Linux Desktop Notes
-
-### Notifications
-
-Desktop notifications are sent through `notify-send` and remain visible for approximately five seconds. Whether they appear above fullscreen applications or bypass Do Not Disturb depends on the desktop environment and notification settings.
-
-Test notifications manually with:
-
-```bash
-notify-send "ChainWatch Test" "Notifications are working"
-```
-
-### Audio
-
-Test SoX audio with:
-
-```bash
-play -n synth 0.18 sine 880
-```
-
-If `play` is unavailable, confirm that SoX is installed:
-
-```bash
-command -v play
-```
-
-### Tkinter Overlay
-
-Test Tkinter with:
-
-```bash
-python3 -m tkinter
-```
-
-A small Tk test window should appear.
-
-### Wayland Limitation
-
-The Linux overlay is fullscreen and topmost, but it is not click-through. Under Wayland, Tkinter does not provide a reliable cross-desktop method for making the overlay ignore mouse and keyboard input.
-
-The Linux overlay can be dismissed by clicking it or pressing `Escape`. Because it may briefly intercept input, consider placing Torn on one monitor and allowing alerts to appear on another, or modifying the overlay behavior for your desktop environment.
-
-The native Windows version does implement click-through behavior.
+The included sharable scripts intentionally leave this field blank.
 
 ## Customization
 
@@ -332,23 +382,6 @@ Thresholds can be added, removed, or changed. Keeping them ordered from most urg
 
 ## Running Automatically
 
-### Windows Startup Folder
-
-1. Press `Win+R`.
-2. Enter:
-
-   ```text
-   shell:startup
-   ```
-
-3. Create a shortcut in the Startup folder that runs:
-
-   ```text
-   pythonw.exe C:\path\to\chainwatch_windows_sharable.py
-   ```
-
-Using `pythonw.exe` runs the script without a visible console window. However, error messages will also be hidden. Test the script with regular `python.exe` first.
-
 ### Linux Autostart
 
 For desktop autostart, create:
@@ -363,7 +396,7 @@ Example contents:
 [Desktop Entry]
 Type=Application
 Name=ChainWatch Alerts
-Exec=python3 /absolute/path/to/chainwatch_alert_sharable.py
+Exec=python3 /absolute/path/to/your_renamed_ChainWatch_file.py
 Terminal=false
 X-GNOME-Autostart-enabled=true
 ```
@@ -371,10 +404,27 @@ X-GNOME-Autostart-enabled=true
 Use the full absolute path to the script. If using a virtual environment, point `Exec` to that environment's Python executable:
 
 ```ini
-Exec=/absolute/path/to/.venv/bin/python /absolute/path/to/chainwatch_alert_sharable.py
+Exec=/absolute/path/to/.venv/bin/python /absolute/path/to/your_renamed_ChainWatch_file.py
 ```
 
 Because ChainWatch displays desktop notifications and a GUI overlay, it should be launched inside your graphical desktop session rather than as a headless system service.
+
+### Windows Startup Folder
+
+1. Press `Win+R`.
+2. Enter:
+
+   ```text
+   shell:startup
+   ```
+
+3. Create a shortcut in the Startup folder that runs:
+
+   ```text
+   pythonw.exe C:\path\to\your_renamed_ChainWatch_file.py
+   ```
+
+Using `pythonw.exe` runs the script without a visible console window. However, error messages will also be hidden. Test the script with regular `python.exe` first.
 
 ## Troubleshooting
 
@@ -382,19 +432,23 @@ Because ChainWatch displays desktop notifications and a GUI overlay, it should b
 
 Run it from PowerShell or a terminal instead of double-clicking it. This keeps errors visible:
 
+On Linux:
+
 ```bash
-python3 chainwatch_alert_sharable.py
+python3 your_renamed_ChainWatch_file.py
 ```
 
-or on Windows:
+On Windows:
 
 ```powershell
-python .\chainwatch_windows_sharable.py
+python .\your_renamed_ChainWatch_file.py
 ```
 
 ### `ModuleNotFoundError: No module named 'requests'`
 
 Install Requests using the same Python interpreter used to run the script:
+
+On Linux
 
 ```bash
 python3 -m pip install requests
@@ -418,13 +472,13 @@ python -m pip install winotify
 
 Confirm that Tkinter is installed and working.
 
-Linux:
+On Linux:
 
 ```bash
 python3 -m tkinter
 ```
 
-Windows:
+On Windows:
 
 ```powershell
 python -m tkinter
@@ -461,16 +515,62 @@ Also verify that the active audio output is not muted and that SoX is using the 
 Common causes include:
 
 - A missing or invalid API key
-- A key without the required faction access
 - Temporary Torn API availability issues
 - No active faction chain
 - Loss of internet connectivity
+- Exceeding the Torn API poll rate limitation
 
 API and network errors are printed to the terminal. ChainWatch waits for the next polling interval and retries automatically.
 
 ### Alerts Repeat After Every Hit
 
-This is expected. A hit refreshes the chain timer, which resets the fired threshold state. If the timer later falls through a threshold again, that threshold alerts again.
+This is expected behavior. A hit refreshes the chain timer, which resets the fired threshold state. If the timer later falls through a threshold again, that threshold alerts again. In the event that the chain timer is getting low between every hit, alerts will fire between every hit.
+
+## Linux Desktop Notes
+
+### Notifications
+
+Desktop notifications are sent through `notify-send` and remain visible for approximately five seconds. Whether they appear above fullscreen applications or bypass Do Not Disturb depends on the desktop environment and notification settings.
+
+Test notifications manually with:
+
+```bash
+notify-send "ChainWatch Test" "Notifications are working"
+```
+
+### Audio
+
+Test SoX audio with:
+
+```bash
+play -n synth 0.18 sine 880
+```
+
+If `play` is unavailable, confirm that SoX is installed:
+
+```bash
+command -v play
+```
+
+### Tkinter Overlay
+
+Test Tkinter with:
+
+```bash
+python3 -m tkinter
+```
+
+A small Tk test window should appear.
+
+### Wayland Limitation
+
+The Linux overlay is fullscreen and topmost, but it is not click-through. Under Wayland, Tkinter does not provide a reliable cross-desktop method for making the overlay ignore mouse and keyboard input.
+
+The Linux overlay can be dismissed by clicking it or pressing `Escape`. Because it may briefly intercept input, consider placing Torn on one monitor and allowing alerts to appear on another, or modifying the overlay behavior for your desktop environment.
+
+<i>Note: Linux clickthrough behavior is not being implemented since each version of each distribution requires different code.</i>
+
+The native Windows version does implement click-through behavior.
 
 ## Security
 
@@ -478,17 +578,19 @@ Your Torn API key is stored as plain text inside the script. Treat the configure
 
 Recommended precautions:
 
-- Never commit a configured copy to a public Git repository.
+- Rename your downloaded copy to something like chainwatch_private.py before configuring with your API key.
+- Never commit a configured copy to any Git repository, public or private.
 - Never upload or send the configured script to someone else.
 - Keep the sharable version's `API_KEY` field blank.
 - Revoke and replace the key immediately if it is exposed.
-- Use only the minimum API permissions required.
+- Use only the minimum API permissions required: public access.
 
 A useful `.gitignore` rule for a private configured copy is:
 
 ```gitignore
 chainwatch_windows.py
 chainwatch_alert.py
+'your_renamed_ChainWatch_file'.py
 ```
 
 You can keep the blank `*_sharable.py` versions tracked while ignoring your locally configured copies.
@@ -503,8 +605,14 @@ Ctrl+C
 
 If it was launched without a console, stop the associated Python process through Task Manager on Windows or your desktop's system monitor on Linux.
 
-## License and Disclaimer
+## License, Fair Use Policy, and Disclaimer
 
 ChainWatch Alerts is an independent community tool and is not affiliated with or endorsed by Torn or its developers.
 
-Use it responsibly and in accordance with Torn's rules and API policies. Alerts depend on network access, API response timing, operating-system notification behavior, and local system performance. ChainWatch should assist human chain watchers, not replace attentive monitoring entirely.
+Use and distribution of this script is governed by the Apache 2.0 license agreement. By using this program, you agree to abide by all terms of the Apache 2.0 license.
+
+By using this program you explicitly agree to use it responsibly and in accordance with Torn's rules and API policies.
+
+### Disclaimer:
+Reliability of alerts depends on the user's network access, Torn API response timing, operating-system notification behavior and settings, and local system performance.
+ChainWatch is designed to assist human chain watchers, not replace attentive monitoring entirely. It does not and cannot take any actions in game on the user's behalf.
