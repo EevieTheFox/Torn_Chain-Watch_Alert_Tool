@@ -345,7 +345,7 @@ POLL_SECONDS = 3
 
 Three seconds is frequent enough for chain monitoring without making unnecessary API requests. Lower values increase API usage and may provide little practical benefit.
 
-Torn strictly enforces a per key API polling limit of 100 per minute. Setting POLL_SECONDS to 1 or lower may put your Torn account at risk of being restricted or banned.
+Torn strictly enforces a per-key API limit of 100 requests per minute. Setting POLL_SECONDS to 1 or lower can exceed that limit. Torn may temporarily restrict the key or account, and repeated API abuse can result in longer restrictions or a ban.
 
 If you intend to run this script on multiple devices at once, either use separate public access API keys, or set POLL_SECONDS to 5 on all devices. This will allow you to run the script on up to six devices at once.
 
