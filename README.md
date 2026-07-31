@@ -1,6 +1,6 @@
-# ChainWatch Alerts
+# ChainWatcher
 
-ChainWatch Alerts is a lightweight desktop alert tool for monitoring an active Torn faction chain. It polls the Torn API every three seconds and warns you as the chain timer approaches zero.
+ChainWatcher is a lightweight desktop alert tool for monitoring an active Torn faction chain. It polls the Torn API every three seconds and warns you as the chain timer approaches zero.
 
 Alerts become progressively more urgent and include:
 
@@ -13,12 +13,12 @@ Separate scripts are provided for Windows and Linux:
 
 | Platform | Script |
 |---|---|
-| Windows | `chainwatch_windows_sharable.py` |
-| Linux | `chainwatch_alert_sharable.py` |
+| Linux | `chainwatcher_linux_v1.py` |
+| Windows | `chainwatcher_windows_v1.py` |
 
 ## How It Works
 
-ChainWatch requests the current faction chain state from the Torn API V2 endpoint:
+ChainWatcher requests the current faction chain state from the Torn API V2 endpoint:
 
 ```text
 https://api.torn.com/v2/faction/chain
@@ -155,29 +155,29 @@ Continue to step 3.
 
 ### 3. Download the Linux Script
 
-Place `chainwatch_linux_v1.py` in a folder of your choice.
+Place `chainwatcher_linux_v1.py` in a folder of your choice.
 
 For example:
 
 ```text
-~/Scripts/ChainWatch
+~/Scripts/ChainWatcher
 ```
 
 ### 4. Rename the File
 For the security of your API key, rename the file after downloading to your local machine.
 
 Examples of good names:
-- chainwatch_private.py
-- chainwatch_personal.py
-- chainwatch_local.py
-- chainwatch_configured.py
-- [your torn username]_chainwatch.py
+- chainwatcher_private.py
+- chainwatcher_personal.py
+- chainwatcher_local.py
+- chainwatcher_configured.py
+- [your torn username]_chainwatcher.py
 
 Examples of bad names:
 - Leaving the name as is when downloaded (risk of uploading or sharing a configured file and compromising your API key)
-- chainwatch_public.py
-- chainwatch_sharable.py
-- chainwatch.py
+- chainwatcher_public.py
+- chainwatcher_sharable.py
+- chainwatcher.py
 - share_me.py
 - what_is_this.py
 - random_gibberish.py
@@ -185,12 +185,12 @@ Examples of bad names:
 
 ### 5. Add Your API Key
 
-Edit `your_renamed_ChainWatch_file.py` and insert your API key as described in [API Key Setup](#api-key-setup).
+Edit `your_renamed_ChainWatcher_file.py` and insert your API key as described in [API Key Setup](#api-key-setup).
 
-### 6. Run ChainWatch
+### 6. Run ChainWatcher
 
 ```bash
-python3 "your_renamed_ChainWatch_file.py"
+python3 "your_renamed_ChainWatcher_file.py"
 ```
 
 Optionally you can make the script executable:
@@ -199,25 +199,25 @@ Optionally you can make the script executable:
 
 Without an alias:
 ```bash
-chmod +x your_renamed_ChainWatch_file.py
+chmod +x your_renamed_ChainWatcher_file.py
 ```
 
-With an alias (for example, 'chainwatch'):
+With an alias (for example, 'chainwatcher'):
 ```bash
-chmod +x /path/to/your_renamed_ChainWatch_file.py
-alias chainwatch='python3 /path/to/your_renamed_ChainWatch_file.py'
+chmod +x /path/to/your_renamed_ChainWatcher_file.py
+alias chainwatcher='python3 /path/to/your_renamed_ChainWatcher_file.py'
 ```
 
 2. Run the executable file:
 
 Without an alias:
 ```bash
-./your_renamed_ChainWatch_file.py
+./your_renamed_ChainWatcher_file.py
 ```
 
 With an alias:
 ```bash
-chainwatch
+chainwatcher
 ```
 
 ## Windows Installation
@@ -242,29 +242,29 @@ py --version
 
 ### 2. Download the Windows Script
 
-Place `chainwatch_windows_v1.py` in a folder of your choice.
+Place `chainwatcher_windows_v1.py` in a folder of your choice.
 
 For example:
 
 ```text
-C:\Users\YourName\ChainWatch
+C:\Users\YourName\ChainWatcher
 ```
 
 ### 3. Rename the File
 For the security of your API key, rename the file after downloading to your local machine.
 
 Examples of good names:
-- chainwatch_private.py
-- chainwatch_personal.py
-- chainwatch_local.py
-- chainwatch_configured.py
-- [your torn username]_chainwatch.py
+- chainwatcher_private.py
+- chainwatcher_personal.py
+- chainwatcher_local.py
+- chainwatcher_configured.py
+- [your torn username]_chainwatcher.py
 
 Examples of bad names:
 - Leaving the name as is when downloaded (risk of uploading or sharing a configured file and compromising your API key)
-- chainwatch_public.py
-- chainwatch_sharable.py
-- chainwatch.py
+- chainwatcher_public.py
+- chainwatcher_sharable.py
+- chainwatcher.py
 - share_me.py
 - what_is_this.py
 - random_gibberish.py
@@ -286,21 +286,21 @@ py -m pip install requests winotify
 
 ### 5. Add Your API Key
 
-Edit `your_renamed_ChainWatch_file.py` and insert your API key as described in [API Key Setup](#api-key-setup).
+Edit `your_renamed_ChainWatcher_file.py` and insert your API key as described in [API Key Setup](#api-key-setup).
 
-### 6. Run ChainWatch
+### 6. Run ChainWatcher
 
 ```powershell
-python .\your_renamed_ChainWatch_file.py
+python .\your_renamed_ChainWatcher_file.py
 ```
 
 Or:
 
 ```powershell
-py .\your_renamed_ChainWatch_file.py
+py .\your_renamed_ChainWatcher_file.py
 ```
 
-Keep the PowerShell window open while ChainWatch is running. Press `Ctrl+C` to stop it.
+Keep the PowerShell window open while ChainWatcher is running. Press `Ctrl+C` to stop it.
 
 ### Windows Behavior
 
@@ -356,7 +356,7 @@ Alerts are defined in the `THRESHOLDS` list:
 ```python
 Threshold(
     timeout=150,
-    title="Chainwatch",
+    title="Chainwatcher",
     message="Check chain. Chain breaks in 2 minutes 30 seconds",
     bg="#F8F0E3",
     flashes=1,
@@ -386,7 +386,7 @@ Thresholds can be added, removed, or changed. Keeping them ordered from most urg
 For desktop autostart, create:
 
 ```text
-~/.config/autostart/chainwatch.desktop
+~/.config/autostart/chainwatcher.desktop
 ```
 
 Example contents:
@@ -394,8 +394,8 @@ Example contents:
 ```ini
 [Desktop Entry]
 Type=Application
-Name=ChainWatch Alerts
-Exec=python3 /absolute/path/to/your_renamed_ChainWatch_file.py
+Name=ChainWatcher
+Exec=python3 /absolute/path/to/your_renamed_ChainWatcher_file.py
 Terminal=false
 X-GNOME-Autostart-enabled=true
 ```
@@ -403,10 +403,10 @@ X-GNOME-Autostart-enabled=true
 Use the full absolute path to the script. If using a virtual environment, point `Exec` to that environment's Python executable:
 
 ```ini
-Exec=/absolute/path/to/.venv/bin/python /absolute/path/to/your_renamed_ChainWatch_file.py
+Exec=/absolute/path/to/.venv/bin/python /absolute/path/to/your_renamed_ChainWatcher_file.py
 ```
 
-Because ChainWatch displays desktop notifications and a GUI overlay, it should be launched inside your graphical desktop session rather than as a headless system service.
+Because ChainWatcher displays desktop notifications and a GUI overlay, it should be launched inside your graphical desktop session rather than as a headless system service.
 
 ### Windows Startup Folder
 
@@ -420,7 +420,7 @@ Because ChainWatch displays desktop notifications and a GUI overlay, it should b
 3. Create a shortcut in the Startup folder that runs:
 
    ```text
-   pythonw.exe C:\path\to\your_renamed_ChainWatch_file.py
+   pythonw.exe C:\path\to\your_renamed_ChainWatcher_file.py
    ```
 
 Using `pythonw.exe` runs the script without a visible console window. However, error messages will also be hidden. Test the script with regular `python.exe` first.
@@ -434,13 +434,13 @@ Run it from PowerShell or a terminal instead of double-clicking it. This keeps e
 On Linux:
 
 ```bash
-python3 your_renamed_ChainWatch_file.py
+python3 your_renamed_ChainWatcher_file.py
 ```
 
 On Windows:
 
 ```powershell
-python .\your_renamed_ChainWatch_file.py
+python .\your_renamed_ChainWatcher_file.py
 ```
 
 ### `ModuleNotFoundError: No module named 'requests'`
@@ -496,7 +496,7 @@ command -v notify-send
 Then test it manually:
 
 ```bash
-notify-send "ChainWatch Test" "Notification test"
+notify-send "ChainWatcher Test" "Notification test"
 ```
 
 ### No Sound on Linux
@@ -519,7 +519,7 @@ Common causes include:
 - Loss of internet connectivity
 - Exceeding the Torn API poll rate limitation
 
-API and network errors are printed to the terminal. ChainWatch waits for the next polling interval and retries automatically.
+API and network errors are printed to the terminal. ChainWatcher waits for the next polling interval and retries automatically.
 
 ### Alerts Repeat After Every Hit
 
@@ -534,7 +534,7 @@ Desktop notifications are sent through `notify-send` and remain visible for appr
 Test notifications manually with:
 
 ```bash
-notify-send "ChainWatch Test" "Notifications are working"
+notify-send "ChainWatcher Test" "Notifications are working"
 ```
 
 ### Audio
@@ -577,7 +577,7 @@ Your Torn API key is stored as plain text inside the script. Treat the configure
 
 Recommended precautions:
 
-- Rename your downloaded copy to something like chainwatch_private.py before configuring with your API key.
+- Rename your downloaded copy to something like chainwatcher_private.py before configuring with your API key.
 - Never commit a configured copy to any Git repository, public or private.
 - Never upload or send the configured script to someone else.
 - Keep the sharable version's `API_KEY` field blank.
@@ -587,7 +587,7 @@ Recommended precautions:
 A useful `.gitignore` rule for a private configured copy is:
 
 ```gitignore
-your_renamed_ChainWatch_file.py
+your_renamed_ChainWatcher_file.py
 *_private.py
 *_personal.py
 *_local.py
@@ -596,7 +596,7 @@ your_renamed_ChainWatch_file.py
 
 You can keep the blank `*_v1.py` versions tracked while ignoring your locally configured copies.
 
-## Stopping ChainWatch
+## Stopping ChainWatcher
 
 When running in a terminal, press:
 
@@ -608,12 +608,12 @@ If it was launched without a console, stop the associated Python process through
 
 ## License, Fair Use Policy, and Disclaimer
 
-ChainWatch Alerts is an independent community tool and is not affiliated with or endorsed by Torn or its developers.
+ChainWatcher is an independent community tool and is not affiliated with or endorsed by Torn or its developers.
 
-ChainWatch Alerts is licensed under the Apache License 2.0. See the LICENSE file for the full license terms.
+ChainWatcher is licensed under the Apache License 2.0. See the LICENSE file for the full license terms.
 
 By using this program you explicitly agree to use it responsibly and in accordance with Torn's rules and API policies.
 
 ### Disclaimer:
 Reliability of alerts depends on the user's network access, Torn API response timing, operating-system notification behavior and settings, and local system performance.
-ChainWatch is designed to assist human chain watchers, not replace attentive monitoring entirely. It does not and cannot take any actions in game on the user's behalf.
+ChainWatcher is designed to assist human chain watchers, not replace attentive monitoring entirely. It does not and cannot take any actions in game on the user's behalf.

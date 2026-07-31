@@ -2,8 +2,8 @@
 *
 
 # Unignore needed files
-!chainwatch_windows_v1.py
-!chainwatch_linux_v1.py
+!chainwatcher_windows_v1.py
+!chainwatcher_linux_v1.py
 !.gitignore
 !*.md
 !*.txt

@@ -1,4 +1,23 @@
-#!/usr/bin/env python3
+# ChainWatcher v1.0
+
+# ChainWatcher is a tool for Torn which gives users large, hard to miss alerts when
+# the faction chain timer is getting low.
+#
+# ChainWatcher was designed with a simple philosophy: chain watching is a brutal,
+# thankless, and immensely boring task. But it doesn't have to be.
+#
+# Dropping a chain is heartbreaking, so ChainWatcher helps you stay alert no matter how
+# distracted you are. With full screen flashes, audible beeps, and large text warnings
+# of increasing intensity, ChainWatcher is designed to get your attention every time.
+# Even when you are playing fortnite, gambling, or making dinner simultaneously.
+
+# So chain on with peace of mind knowing ChainWatcher has your back!
+
+# ChainWatcher v1.0 released 31 July 2026
+# Developed and maintained by EevieTheFox[3942777]
+
+
+#----- Imports -----#
 import os
 import sys
 import time
@@ -12,7 +31,6 @@ from typing import Optional, Dict, Any
 import requests
 
 # -------- Global Constants -------- #
-
 API_KEY = "" # Insert personal public only api key between the quotation marks.
 API_URL = f"https://api.torn.com/v2/faction/chain?key={API_KEY}"
 POLL_SECONDS = 3  # 2-5s is a good balance
@@ -31,7 +49,7 @@ class Threshold:
 THRESHOLDS = [
     Threshold(
         timeout=60,
-        title="Chainwatch",
+        title="Chainwatcher",
         message="Extreme Danger! Chain breaks in under 1 minute!",
         bg="#F44336",  # red
         flashes=5,
@@ -40,7 +58,7 @@ THRESHOLDS = [
     ),
     Threshold(
         timeout=90,
-        title="Chainwatch",
+        title="Chainwatcher",
         message="Danger! Chain breaks in 1 minute 30 seconds",
         bg="#FF9800",  # orange
         flashes=3,
@@ -49,7 +67,7 @@ THRESHOLDS = [
     ),
     Threshold(
         timeout=120,
-        title="Chainwatch",
+        title="Chainwatcher",
         message="Warning! Chain breaks in 2 minutes",
         bg="#FFD54A",       # yellow-ish
         flashes=2,
@@ -58,7 +76,7 @@ THRESHOLDS = [
     ),
     Threshold(
         timeout=150,
-        title="Chainwatch",
+        title="Chainwatcher",
         message="Check chain. Chain breaks in 2 minutes 30 seconds",
         bg="#F8F0E3",  # white-ish
         flashes=1,
@@ -109,7 +127,7 @@ def get_chain_state() -> Optional[tuple[int, int]]:
 
         if "error" in data:
             err = data["error"]
-            print(f"[chainwatch] Torn API error: {err}", file=sys.stderr)
+            print(f"[chainwatcher] Torn API error: {err}", file=sys.stderr)
             return None
 
         chain = data.get("chain", {})
@@ -118,7 +136,7 @@ def get_chain_state() -> Optional[tuple[int, int]]:
         return (timeout, current)
 
     except (requests.RequestException, ValueError, json.JSONDecodeError) as e:
-        print(f"[chainwatch] Request failed: {e}", file=sys.stderr)
+        print(f"[chainwatcher] Request failed: {e}", file=sys.stderr)
         return None
 
 
@@ -134,7 +152,7 @@ def show_overlay(bg: str, text: str, flashes: int) -> None:
         return
 
     root = tk.Tk()
-    root.title("Chainwatch Alert")
+    root.title("Chainwatcher Alert")
 
     # Fullscreen + topmost + no decorations
     root.attributes("-fullscreen", True)
