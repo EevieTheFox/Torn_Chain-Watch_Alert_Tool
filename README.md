@@ -190,7 +190,7 @@ Edit `your_renamed_ChainWatch_file.py` and insert your API key as described in [
 ### 6. Run ChainWatch
 
 ```bash
-python3 `your_renamed_ChainWatch_file.py`
+python3 "your_renamed_ChainWatch_file.py"
 ```
 
 Optionally you can make the script executable:
@@ -205,8 +205,7 @@ chmod +x your_renamed_ChainWatch_file.py
 With an alias (for example, 'chainwatch'):
 ```bash
 chmod +x /path/to/your_renamed_ChainWatch_file.py
-alias chainwatch='/path/to/your_renamed_ChainWatch_file.py'
-source ~/.bashrc
+alias chainwatch='python3 /path/to/your_renamed_ChainWatch_file.py'
 ```
 
 2. Run the executable file:
@@ -316,7 +315,7 @@ The fullscreen overlay is intentionally click-through. It should not intercept m
 
 ## API Key Setup
 
-Create a Torn API key that can access faction chain information. A public-only key is sufficient for the script's intended use.
+Create a unique Torn API key. A public-only key is sufficient for the script's intended use.
 
 Open the appropriate script and locate:
 
@@ -588,12 +587,14 @@ Recommended precautions:
 A useful `.gitignore` rule for a private configured copy is:
 
 ```gitignore
-chainwatch_windows.py
-chainwatch_alert.py
-'your_renamed_ChainWatch_file'.py
+your_renamed_ChainWatch_file.py
+*_private.py
+*_personal.py
+*_local.py
+*_configured.py
 ```
 
-You can keep the blank `*_sharable.py` versions tracked while ignoring your locally configured copies.
+You can keep the blank `*_v1.py` versions tracked while ignoring your locally configured copies.
 
 ## Stopping ChainWatch
 
@@ -609,7 +610,7 @@ If it was launched without a console, stop the associated Python process through
 
 ChainWatch Alerts is an independent community tool and is not affiliated with or endorsed by Torn or its developers.
 
-Use and distribution of this script is governed by the Apache 2.0 license agreement. By using this program, you agree to abide by all terms of the Apache 2.0 license.
+ChainWatch Alerts is licensed under the Apache License 2.0. See the LICENSE file for the full license terms.
 
 By using this program you explicitly agree to use it responsibly and in accordance with Torn's rules and API policies.
 
