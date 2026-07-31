@@ -16,6 +16,7 @@
 # So chain on with peace of mind knowing ChainWatcher has your back!
 
 # ChainWatcher v1.0 released 31 July 2026
+# Licensed under Apache 2.0
 # Developed and maintained by EevieTheFox[3942777]
 
 
