@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# ChainWatcher v1.0
+# ChainWatcher
 
 # ChainWatcher is a tool for Torn which gives users large, hard to miss alerts when
 # the faction chain timer is getting low.
@@ -12,12 +12,13 @@
 # distracted you are. With full screen flashes, audible beeps, and large text warnings
 # of increasing intensity, ChainWatcher is designed to get your attention every time.
 # Even when you are playing fortnite, gambling, or making dinner simultaneously.
-
+#
 # So chain on with peace of mind knowing ChainWatcher has your back!
 
+# Developed and maintained by EevieTheFox[3942777]
+#
 # ChainWatcher v1.0 released 31 July 2026
 # Licensed under Apache 2.0
-# Developed and maintained by EevieTheFox[3942777]
 
 
 #----- Imports -----#
