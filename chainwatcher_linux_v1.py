@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # ChainWatcher v1.0
 
 # ChainWatcher is a tool for Torn which gives users large, hard to miss alerts when
