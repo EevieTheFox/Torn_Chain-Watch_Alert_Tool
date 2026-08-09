@@ -1,5 +1,6 @@
 # ChainWatcher - v1.1 <br>
 <sub>Released 9th August 2026</sub>
+<div style="border-bottom: 1px solid rgba(128,128,128,.3);"></div>
 
 ChainWatcher is a lightweight desktop alert tool for monitoring an active Torn faction chain. It polls the Torn API every three seconds and warns you as the chain timer approaches zero.
 
