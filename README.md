@@ -1,4 +1,4 @@
-### ChainWatcher
+# ChainWatcher
 
 <small>v1.1 released 9th August 2026</small>
 
