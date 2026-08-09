@@ -1,22 +1,35 @@
-# ChainWatcher
+#=======================================================================================#
+# ChainWatcher - Emergency Version
 
 # ChainWatcher is a tool for Torn which gives users large, hard to miss alerts when
 # the faction chain timer is getting low.
-#
+
+# Emergency Version is a special edition that only alerts when the chain drops to 60
+# seconds or below. This version is intended for those who are background/backup
+# watching, or on emergency pings only. THIS IS A LAST RESORT TO SAVE THE CHAIN.
+
 # ChainWatcher was designed with a simple philosophy: chain watching is a brutal,
 # thankless, and immensely boring task. But it doesn't have to be.
-#
+
 # Dropping a chain is heartbreaking, so ChainWatcher helps you stay alert no matter how
 # distracted you are. With full screen flashes, audible beeps, and large text warnings
 # of increasing intensity, ChainWatcher is designed to get your attention every time.
 # Even when you are playing fortnite, gambling, or making dinner simultaneously.
-#
+
 # So chain on with peace of mind knowing ChainWatcher has your back!
 
+
 # Developed and maintained by EevieTheFox[3942777]
-#
-# ChainWatcher v1.0 released 31 July 2026
+
+
+# ChainWatcher - Emergency Version v1.0
+# Released 9th August 2026
+
 # Licensed under Apache 2.0
+#=======================================================================================#
+
+
+
 
 
 #----- Imports -----#
@@ -59,34 +72,6 @@ THRESHOLDS = [
         flashes=5,
         tone_hz=1320,
         tone_repeats=5,
-    ),
-    Threshold(
-        timeout=90,
-        title="Chainwatcher",
-        message="Danger! Chain breaks in 1 minute 30 seconds",
-        bg="#FF9800",  # orange
-        flashes=3,
-        tone_hz=1100,
-        tone_repeats=3,
-    ),
-    Threshold(
-        timeout=120,
-        title="Chainwatcher",
-        message="Warning! Chain breaks in 2 minutes",
-        bg="#FFD54A",       # yellow-ish
-        flashes=2,
-        tone_hz=880,
-        tone_repeats=2,
-    ),
-    Threshold(
-        timeout=150,
-        title="Chainwatcher",
-        message="Check chain. Chain breaks in 2 minutes 30 seconds",
-        bg="#F8F0E3",  # white-ish
-        flashes=1,
-        tone_hz=660,
-        tone_repeats=1,
-    ),
 ]
 
 # -------- Utilities -------- #
@@ -97,7 +82,7 @@ def notify(title: str, body: str) -> None:
         app_id="Chainwatcher",
         title=title,
         msg=body,
-        duration="short"
+        duration="long"
     )
     toast.show()
 

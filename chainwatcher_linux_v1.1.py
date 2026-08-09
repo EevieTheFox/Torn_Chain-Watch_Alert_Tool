@@ -1,24 +1,32 @@
 #!/usr/bin/env python3
-
+#=======================================================================================#
 # ChainWatcher
 
 # ChainWatcher is a tool for Torn which gives users large, hard to miss alerts when
 # the faction chain timer is getting low.
-#
+
 # ChainWatcher was designed with a simple philosophy: chain watching is a brutal,
 # thankless, and immensely boring task. But it doesn't have to be.
-#
+
 # Dropping a chain is heartbreaking, so ChainWatcher helps you stay alert no matter how
 # distracted you are. With full screen flashes, audible beeps, and large text warnings
 # of increasing intensity, ChainWatcher is designed to get your attention every time.
 # Even when you are playing fortnite, gambling, or making dinner simultaneously.
-#
+
 # So chain on with peace of mind knowing ChainWatcher has your back!
 
+
 # Developed and maintained by EevieTheFox[3942777]
-#
-# ChainWatcher v1.0 released 31 July 2026
+
+
+# ChainWatcher v1.1
+# Released 9th August 2026
+
 # Licensed under Apache 2.0
+#=======================================================================================#
+
+
+
 
 
 #----- Imports -----#
@@ -98,7 +106,7 @@ def run(cmd: list[str]) -> None:
 # Sends a desktop notification
 def notify(title: str, body: str) -> None:
     # -u critical tends to punch through DND modes on some DEs (not all).
-    run(["notify-send", "-u", "normal", "-t", "5000", title, body])
+    run(["notify-send", "-u", "normal", "-t", "15000", title, body])
 # Checks that there is a command to process
 def has_cmd(name: str) -> bool:
     return subprocess.call(["bash", "-lc", f"command -v {name} >/dev/null 2>&1"]) == 0
