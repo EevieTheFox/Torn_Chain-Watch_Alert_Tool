@@ -106,7 +106,7 @@ def run(cmd: list[str]) -> None:
 # Sends a desktop notification
 def notify(title: str, body: str) -> None:
     # -u critical tends to punch through DND modes on some DEs (not all).
-    run(["notify-send", "-u", "normal", "-t", "30000", title, body])
+    run(["notify-send", "-u", "normal", "-t", "15000", title, body])
 # Checks that there is a command to process
 def has_cmd(name: str) -> bool:
     return subprocess.call(["bash", "-lc", f"command -v {name} >/dev/null 2>&1"]) == 0
